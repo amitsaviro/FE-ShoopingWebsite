@@ -1,0 +1,127 @@
+.product-display {
+    display: flex;
+    margin: 0px 170px;
+    position: relative;
+}
+
+.product-display-left {
+    display: flex;
+    gap: 17px;
+}
+
+.product-display-img-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-display-img-list img {
+    height: 125px;
+    border: 1px solid #919191;
+}
+
+.product-display-img {
+    position: relative;
+}
+
+.product-display-main-img {
+    width: 586px;
+    height: 620px;
+    border: 1px solid #919191;
+    position: relative;
+    z-index: 1;
+}
+
+.product-display-right {
+    margin: 0px 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-display-right h1 {
+    color: #3d3d3d;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.product-display-right-stars {
+    display: flex;
+    align-items: center;
+    margin-top: 13px;
+    gap: 5px;
+    color: #1c1c1c;
+    font-size: 16px;
+}
+
+.product-display-right-prices {
+    margin: 40px 0px;
+    display: flex;
+    gap: 30px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.product-display-right-old-price {
+    color: #818181;
+    text-decoration: line-through;
+}
+
+.product-display-right-price {
+    color: #dc1717;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 8px;
+}
+
+.sold-out {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 150px;
+    z-index: 2;
+}
+
+.out-of-stock {
+    position: relative;
+}
+
+.product-display-addToCart:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+.product-display-addToCart{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 300px;
+    height: 70px;
+    border-radius: 75px;
+    margin-top: 30px;
+    background: #ff4141;
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+}
+.available{
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+}

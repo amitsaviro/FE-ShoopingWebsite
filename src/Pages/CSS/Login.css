@@ -1,0 +1,138 @@
+.login-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 400px;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #fde1ff 0%, #ed070722 60%);
+    margin-bottom: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    flex-grow: 1;
+    padding-bottom: 1rem;
+}
+
+
+.login-input {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ced4da;
+}
+
+.login-input:focus {
+    outline: none;
+    border-color: #007bff; 
+}
+
+button {
+    cursor:pointer;
+}
+
+.login-btn {
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #ff0000; 
+    color: #fff;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.login-btn:hover {
+    background-color: #0056b3; 
+}
+
+.login-btn:disabled {
+    background-color: #6c757d; 
+    cursor: not-allowed;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.needAnAccount {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.register {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.register:hover {
+    color: #0056b3;
+}
+
+.line::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #ccc;
+    margin: 10px auto;
+}
+
+.line {
+    position: relative;
+    display: inline-block;
+}
+
+.line span {
+    background-color: #ffffffba;
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
+}
+.login-secced-msg{
+    font-size: 40px;
+    font-weight: 700;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 100px;
+    padding: 10px;
+}
+.login-secced-msg br{
+    content: "";
+    display: block;
+    width: 20%;
+    height: 5px;
+    border-radius: 10px;
+    background-color: #928d8d;
+    margin: 20px auto;
+}
+.login-link {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.login-link:hover {
+    color: #0056b3;
+}
+
+
