@@ -11,8 +11,6 @@ import Login from './Pages/Login';
 import Register from './Pages/Register'; 
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import SearchResults from './components/SearchResults/SearchResults';
-import Item from './components/Item/Item';
-import axios from 'axios';
 
 
 function App() {
