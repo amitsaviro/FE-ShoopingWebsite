@@ -1,37 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./SearchBar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { getAllItems } from "../services/itemApi";
+import { ShopContext } from "../../Context/ShopContext";
 
 const SearchBar = () => {
-    const [searchItems, setSearchItems] = useState([]);
+    const { items } = useContext(ShopContext);
     const [filteredItems, setFilteredItems] = useState([]);
     const [input, setInput] = useState("");
     const navigate = useNavigate();
-
-    useEffect(() => {
-        fetchSearchItems();
-    }, []);
-
-    const fetchSearchItems = async () => {
-        try {
-            const response = await getAllItems();
-            if (response.data && response.data.length > 0) {
-                setSearchItems(response.data);
-            }
-        } catch (error) {
-            console.error('Error fetching items:', error);
-        }
-    };
 
     const handleChange = (value) => {
         setInput(value);
         if (value === "") {
             setFilteredItems([]);
         } else {
-            const filtered = searchItems.filter(item =>
+            const filtered = items.filter(item =>
                 item.itemName.toLowerCase().includes(value.toLowerCase())
             );
             setFilteredItems(filtered);

@@ -1,36 +1,22 @@
-import React, {useState, useEffect,} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import './Popular.css';
-import {getAllItems} from "../services/itemApi";
+import { ShopContext } from "../../Context/ShopContext";
 import Item from "../Item/Item";
 
-
-
-const Popular = () =>{
+const Popular = () => {
+    const { items } = useContext(ShopContext);
     const [popularItems, setPopularItems] = useState([]);
     const [imageMap, setImageMap] = useState({});
     const [loading, setLoading] = useState(true);
 
-
-
     useEffect(() => {
-        fetchPopularItems();
-    }, []);
-
-    const fetchPopularItems = async () => {
-        try {
-            const response = await getAllItems();
-            if (response.data && response.data.length > 0) {
-                // Randomly select 4 items
-                const randomItems = getRandomItems(response.data, 4);
-                setPopularItems(randomItems);
-                preloadImages(randomItems);
-            }
+        if (items.length > 0) {
+            const randomItems = getRandomItems(items, 4);
+            setPopularItems(randomItems);
+            preloadImages(randomItems);
             setLoading(false);
-        } catch (error) {
-            console.error('Error fetching popular items:', error);
-            setLoading(true);
         }
-    };
+    }, [items]);
 
     const getRandomItems = (items, count) => {
         const shuffledItems = items.sort(() => 0.5 - Math.random());
@@ -49,7 +35,7 @@ const Popular = () =>{
         <div className="popular">
             <h2>POPULAR ITEMS</h2>
             <hr />
-            {loading ? ( // Render loading animation if loading is true
+            {loading ? (
                 <div className="loading-animation">
                     <div className="loading-spinner"></div>
                     <span>Loading...</span>
@@ -63,5 +49,6 @@ const Popular = () =>{
             )}
         </div>
     );
-}
-export default Popular
+};
+
+export default Popular;

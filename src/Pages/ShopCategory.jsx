@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import './CSS/ShopCategory.css'
-import { getAllItems } from "../components/services/itemApi";
+import './CSS/ShopCategory.css';
 import { ShopContext } from "../Context/ShopContext";
 import Item from "../components/Item/Item";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,28 +9,23 @@ import { spiral } from 'ldrs';
 spiral.register();
 
 const ShopCategory = (props) => {
-    const { getAllItems } = useContext(ShopContext)
+    const { items } = useContext(ShopContext);
     const [shopCategoryItems, setShopCategoryItems] = useState([]);
     const [imageMap, setImageMap] = useState({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         setLoading(true);
-        fetchShopCategoryItems();
-    }, [props.category]);
-
-    const fetchShopCategoryItems = async () => {
-        try {
-            const response = await getAllItems();
-            if (response.data && response.data.length > 0) {
-                preloadImages(response.data);
-                setShopCategoryItems(response.data);
-            }
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching special items:', error);
-            setLoading(true);
+        if (items.length > 0) {
+            fetchShopCategoryItems();
         }
+    }, [items, props.category]);
+
+    const fetchShopCategoryItems = () => {
+        const categoryItems = items.filter(item => item.category === props.category);
+        preloadImages(categoryItems);
+        setShopCategoryItems(categoryItems);
+        setLoading(false);
     };
 
     const preloadImages = (items) => {
@@ -59,21 +53,25 @@ const ShopCategory = (props) => {
                     </div>
                 </div>
                 <div className="shopCategory-products">
-                    {shopCategoryItems.map((item, i) => {
-                        if (props.category === item.category) {
-                            return <Item key={i} id={item.itemId} name={item.itemName} imgUrl={imageMap[item.imgUrl]} price={item.price} oldPrice={item.oldPrice} category={item.category} stock={item.stock} />
-                        }
-                        else {
-                            return null;
-                        }
-                    })}
+                    {shopCategoryItems.map((item, i) => (
+                        <Item
+                            key={i}
+                            id={item.itemId}
+                            name={item.itemName}
+                            imgUrl={imageMap[item.imgUrl]}
+                            price={item.price}
+                            oldPrice={item.oldPrice}
+                            category={item.category}
+                            stock={item.stock}
+                        />
+                    ))}
                 </div>
                 <div className="load-more">
                     Load More...
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default ShopCategory;

@@ -1,35 +1,26 @@
-import React, {useState, useEffect,} from "react";
-import "./RelatedProducts.css"
-import {getAllItems} from "../services/itemApi";
+import React, { useContext, useState, useEffect } from "react";
+import "./RelatedProducts.css";
 import Item from "../Item/Item";
+import { ShopContext } from "../../Context/ShopContext";
 
-
-
-const RelatedProducts = (props) =>{
-    const {product}=props;
+const RelatedProducts = ({ product }) => {
+    const { items } = useContext(ShopContext);
     const [relatedProducts, setRelatedProducts] = useState([]);
     const [imageMap, setImageMap] = useState({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetchRelatedProducts();
-    }, [product]);
-
-    const fetchRelatedProducts = async () => {
-        try {
-            const response = await getAllItems();
-            if (response.data && response.data.length > 0) {
-                // Randomly select 4 items
-                const filteredItems = response.data.filter(item => item.itemId !== product.itemId);//filter the specif item
-                const randomItems = getRandomItems(filteredItems, 4);
-                setRelatedProducts(randomItems);
-                preloadImages(randomItems);
-            }
-            setLoading(false);
-        } catch (error) {
-            console.error('Error fetching popular items:', error);
-            setLoading(true);
+        if (items.length > 0) {
+            fetchRelatedProducts();
         }
+    }, [product, items]);
+
+    const fetchRelatedProducts = () => {
+        const filteredItems = items.filter(item => item.itemId !== product.itemId);
+        const randomItems = getRandomItems(filteredItems, 4);
+        setRelatedProducts(randomItems);
+        preloadImages(randomItems);
+        setLoading(false);
     };
 
     const getRandomItems = (items, count) => {
@@ -44,23 +35,25 @@ const RelatedProducts = (props) =>{
             setImageMap(imageObject);
         });
     };
-    return(
-        <div className="relatedProducts">'
-        <h1>Related Products</h1>
-        <hr />
-            {loading ? ( // Render loading animation if loading is true
+
+    return (
+        <div className="relatedProducts">
+            <h1>Related Products</h1>
+            <hr />
+            {loading ? (
                 <div className="loading-animation">
                     <div className="loading-spinner"></div>
                     <span>Loading...</span>
                 </div>
             ) : (
-                <div className="relatedProducts-items" onClick={fetchRelatedProducts}>
-                {relatedProducts.map((item, i) => (
-                        <Item key={i} id={item.itemId} name={item.itemName} imgUrl={imageMap[item.imgUrl]} price={item.price} oldPrice={item.oldPrice} category={item.category} stock={item.stock}/>
+                <div className="relatedProducts-items">
+                    {relatedProducts.map((item, i) => (
+                        <Item key={i} id={item.itemId} name={item.itemName} imgUrl={imageMap[item.imgUrl]} price={item.price} oldPrice={item.oldPrice} category={item.category} stock={item.stock} />
                     ))}
                 </div>
             )}
-            </div>
-    )
-}
-export default RelatedProducts
+        </div>
+    );
+};
+
+export default RelatedProducts;
