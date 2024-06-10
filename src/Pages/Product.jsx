@@ -14,6 +14,7 @@ const Product = () => {
     const [product, setProduct] = useState(null);
     const [imageMap, setImageMap] = useState({});
     const [loading, setLoading] = useState(true);
+    const wishlistItemIds = [];
 
     useEffect(() => {
         setLoading(true);

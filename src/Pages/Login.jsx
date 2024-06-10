@@ -26,15 +26,19 @@ function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const userBody = {
-                username: user,
-                password: pwd,
-            };
+            const userBody = { username: user, password: pwd };
             const response = await authenticate(userBody);
-            localStorage.setItem('token', response.data.jwt);
-            localStorage.setItem('username', user);
+            const { jwt, customer } = response.data;
+    
+            localStorage.setItem('token', jwt);
+            localStorage.setItem('customerId', customer.id);
+            localStorage.setItem('firstName', customer.firstName);
+            localStorage.setItem('address', customer.address);
+            console.log(customer.id);
+    
+            setAuth({ token: jwt }); // Set auth state with token
+    
             setSuccess(true);
-            setAuth(response.data.jwt)
             setUser("");
             setPwd("");
         } catch (err) {
@@ -48,7 +52,6 @@ function Login() {
             errRef.current.focus();
         }
     };
-    
 
     return (
         <Fragment>

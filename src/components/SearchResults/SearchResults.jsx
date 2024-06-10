@@ -65,7 +65,7 @@ const SearchResults = () => {
                 </div>
                 <div className="searchResults-products">
                     {searchResults.map((item, i) => (
-                        <Item key={i} id={item.itemId} name={item.itemName} imgUrl={imageMap[item.imgUrl]} price={item.price} oldPrice={item.oldPrice} category={item.category} />
+                        <Item key={i} id={item.itemId} name={item.itemName} imgUrl={imageMap[item.imgUrl]} price={item.price} oldPrice={item.oldPrice} category={item.category} stock={item.stock} />
                     ))}
                 </div>
             </div>

@@ -15,7 +15,13 @@ function UPDATE_ORDER_LIST() {
 function DELETE_ORDER_LIST() {
     return 'orderList/delete';
 }
-
+function GET_ORDER_LIST_BY_CUSTOMER()
+{
+    return 'orderList/getOrderListByCustomer';
+}
+function GET_TEMP_ORDER_LIST_BY_CUSTOMER(){
+    return 'orderList/getTEMPorder';
+}
 export function createNewOrderList(orderListBody) {
     return axios.post(CREATE_NEW_ORDER_LIST(), orderListBody);
 }
@@ -30,6 +36,12 @@ export function updateOrderList(orderListId, orderListBody) {
 
 export function deleteOrderList(orderListId) {
     return axios.delete(DELETE_ORDER_LIST() + '/' + orderListId);
+}
+export function getOrderListByCustomer(customerId) {
+    return axios.get(GET_ORDER_LIST_BY_CUSTOMER() + '/' + customerId);
+}
+export function getTempOrderListByCustomerId(customerId) {
+    return axios.get(GET_TEMP_ORDER_LIST_BY_CUSTOMER() + '/' + customerId);
 }
 
  

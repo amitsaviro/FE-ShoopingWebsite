@@ -1,0 +1,52 @@
+.my-orders-container {
+    margin: 20px;
+    cursor: pointer;
+}
+
+.order-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.order-item {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.order-item:hover {
+    transform: translateY(-5px);
+}
+
+.order-details {
+    font-size: 18px;
+    color: #333;
+}
+
+.order-details h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.order-details p {
+    margin: 0;
+}
+
+h2 {
+    color: #222;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 36px;
+    font-weight: bold;
+}
+.my-orders-container hr {
+    width: 200px;
+    height: 6px;
+    border-radius: 10px;
+    background: #252525;
+    margin: 0 auto 5px; 
+}
