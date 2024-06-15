@@ -1,6 +1,29 @@
+/* MyOrders.css */
+
 .my-orders-container {
     margin: 20px;
-    cursor: pointer;
+    display: flex;
+    transition: margin 0.5s ease; /* Add transition for smooth margin change */
+}
+
+.order-list-container {
+    width: 100%; /* Initially set to 100% */
+    transition: width 0.5s ease; /* Add transition for smooth width change */
+}
+
+.cart-container {
+    width: 0; /* Initially hidden */
+    overflow: hidden; /* Hide the cart container */
+    transition: width 0.5s ease; /* Add transition for smooth width change */
+}
+
+.order-list-container.cart-open {
+    width: 18%; /* Width when cart is open */
+}
+
+.cart-container.open {
+    width: 82%; /* Width when cart is open */
+    transition-delay: 0.3s; /* Add delay to cart opening animation */
 }
 
 .order-list {
@@ -15,14 +38,22 @@
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
+    cursor: pointer;
 }
 
 .order-item:hover {
     transform: translateY(-5px);
 }
 
+.order-item.selected {
+    background-color: #f0f0f0;
+    border-left: 5px solid #FFD700; 
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1); 
+}
+
+
 .order-details {
-    font-size: 18px;
+    font-size: 14px;
     color: #333;
 }
 
@@ -36,17 +67,52 @@
     margin: 0;
 }
 
-h2 {
+.my-orders-container h2 {
     color: #222;
     text-align: center;
     margin-bottom: 10px;
     font-size: 36px;
     font-weight: bold;
 }
-.my-orders-container hr {
+
+.hr-title {
     width: 200px;
     height: 6px;
     border-radius: 10px;
     background: #252525;
     margin: 0 auto 5px; 
 }
+
+.empty-myOrders {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.empty-myOrders h2 {
+    font-size: 24px;
+    color: #454545;
+    margin-bottom: 10px;
+}
+
+.empty-myOrders p {
+    font-size: 18px;
+    color: #757575;
+}
+
+.transitioning .order-list-container {
+    margin-right: 0; 
+}
+.edit-icon {
+    position: absolute;
+    top: 170px; 
+    right: 200px; 
+    color: #007bff;
+    cursor: pointer;
+    z-index: 999;
+    font-size: 30px;
+    transition: transform 0.3s ease-in-out; 
+  }
+  
+  .edit-icon:hover {
+    transform: scale(1.2); 
+  }

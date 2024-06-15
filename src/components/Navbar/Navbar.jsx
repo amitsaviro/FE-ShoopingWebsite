@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faHeart, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
-import AuthContext from "../../Context/AuthProvider"; // Import AuthContext
+import AuthContext from "../../Context/AuthProvider"; 
 import { ShopContext } from "../../Context/ShopContext";
 
 

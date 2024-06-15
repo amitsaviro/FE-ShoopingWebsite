@@ -19,7 +19,7 @@ const Popular = () => {
     }, [items]);
 
     const getRandomItems = (items, count) => {
-        const shuffledItems = items.sort(() => 0.5 - Math.random());
+        const shuffledItems = items.sort(() => 0.5 - Math.random());//rand "popular" items
         return shuffledItems.slice(0, count);
     };
 

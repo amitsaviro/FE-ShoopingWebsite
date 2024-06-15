@@ -13,7 +13,7 @@ const ProductDisplay = (props) => {
     const { auth } = useContext(AuthContext);
     const isOutOfStock = product.stock === 0;
     const [isAnimating, setIsAnimating] = useState(false);
-    const [isProductInWishlist, setIsProductInWishlist] = useState(false); // Updated state
+    const [isProductInWishlist, setIsProductInWishlist] = useState(false);
     const [showAddedToWishlist, setShowAddedToWishlist] = useState(false);
 
     useEffect(() => {

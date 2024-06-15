@@ -24,7 +24,7 @@ const RelatedProducts = ({ product }) => {
     };
 
     const getRandomItems = (items, count) => {
-        const shuffledItems = items.sort(() => 0.5 - Math.random());
+        const shuffledItems = items.sort(() => 0.5 - Math.random());//rand related items
         return shuffledItems.slice(0, count);
     };
 

@@ -3,7 +3,7 @@ import './item.css';
 import { Link } from "react-router-dom";
 import soldOutImage from "../../Assets/soldOut.png"
 
-const Item = (props) => {
+const Item = (props) => {// item format using in some places in website
     const isOutOfStock = props.stock === 0;
 
     return (
