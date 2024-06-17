@@ -63,7 +63,8 @@
 .login_navbar button:active {
     background-color: #efebeb; 
 }
-.icons_count{
+
+.icons_count {
     width: 14px;
     height: 14px;
     display: flex;
@@ -76,13 +77,16 @@
     background: red;
     color: white;
 }
+
 a {
     text-decoration: none;
     color: black;
 }
+
 .search-bar-container {
     margin-top: 10px; 
 }
+
 .profile-dropdown {
     position: relative;
     display: inline-block;  
@@ -95,6 +99,7 @@ a {
     min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    border-radius: 5px; /* Rounded corners */
 }
 
 .profile-dropdown .dropdown-content a {
@@ -102,6 +107,7 @@ a {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
 }
 
 .profile-dropdown .dropdown-content a:hover {
@@ -115,6 +121,24 @@ a {
 .profile-dropdown:hover .dropbtn {
     background-color: #3e8e41;
 }
-.dropdown-icon{
+
+.dropdown-icon {
     padding-right: 5px;
+}
+
+.delete-account-btn {
+    color: #f44336;
+    border: none;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    box-sizing: border-box; 
+}
+
+.delete-account-btn:hover {
+    background-color: #ffebee; 
 }

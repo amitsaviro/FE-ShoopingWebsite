@@ -1,4 +1,4 @@
-import {axiosInstance as axios} from './axiosInstance'
+import {axiosInstancePublic as axios} from './axiosInstancePublic'
 
 function CREATE_NEW_CUSTOMER() {
     return 'customer/create';
@@ -27,8 +27,8 @@ export function getCustomer(customerId) {
     return axios.get(GET_CUSTOMER() + '/' + customerId);
 }
 
-export function updateCustomer(customerId, customerBody) {
-    return axios.put(UPDATE_CUSTOMER() + '/' + customerId, customerBody);
+export function updateCustomer(customerBody) {
+    return axios.put(UPDATE_CUSTOMER(), customerBody);
 }
 
 export function deleteCustomer(customerId) {

@@ -29,14 +29,13 @@ function Login() {
             const userBody = { username: user, password: pwd };
             const response = await authenticate(userBody);
             const { jwt, customer } = response.data;
-    
+
             localStorage.setItem('token', jwt);
             localStorage.setItem('customerId', customer.id);
             localStorage.setItem('firstName', customer.firstName);
             localStorage.setItem('address', customer.address);
-            console.log(customer.id);
     
-            setAuth({ token: jwt }); // Set auth state with token
+            setAuth({ token: jwt, customer }); // Update auth state with token and customer details
     
             setSuccess(true);
             setUser("");
@@ -108,4 +107,3 @@ function Login() {
 }
 
 export default Login;
-///

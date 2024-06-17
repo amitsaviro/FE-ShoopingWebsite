@@ -1,4 +1,4 @@
-import { axiosInstance as axios } from './axiosInstance';
+import { axiosInstancePublic as axios } from './axiosInstancePublic';
 
 function CREATE_NEW_ITEM() {
     return 'item/create';

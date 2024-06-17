@@ -3,11 +3,11 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./CSS/Register.css";
 import { createNewCustomer } from "../components/services/customerApi";
-import { Link, Route, Routes } from "react-router-dom";
-import Login from "./Login";
+import { Link } from "react-router-dom";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const Register = () => {
     const userRef = useRef();
@@ -28,6 +28,8 @@ const Register = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [validEmail, setValidEmail] = useState(false);
+    const [emailFocus, setEmailFocus] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
 
@@ -48,8 +50,12 @@ const Register = () => {
     }, [pwd, matchPwd]);
 
     useEffect(() => {
+        setValidEmail(EMAIL_REGEX.test(email));
+    }, [email]);
+
+    useEffect(() => {
         setErrMsg('');
-    }, [user, pwd, matchPwd]);
+    }, [user, pwd, matchPwd, email]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -57,7 +63,7 @@ const Register = () => {
         const v2 = PWD_REGEX.test(pwd);
         const v3 = firstName.trim() !== '';
         const v4 = lastName.trim() !== '';
-        const v5 = email.trim() !== '';
+        const v5 = EMAIL_REGEX.test(email);
         const v6 = phoneNumber.trim() !== '';
         const v7 = address.trim() !== '';
         if (!v1 || !v2 || !v3 || !v4 || !v5 || !v6 || !v7) {
@@ -85,7 +91,7 @@ const Register = () => {
             } else if (err.response.status === 500) {
                 setErrMsg('Username Taken');
             } else {
-                setErrMsg('Registration Failed')
+                setErrMsg('Registration Failed');
             }
             errRef.current.focus();
         }
@@ -132,6 +138,7 @@ const Register = () => {
                             Must begin with a letter.<br />
                             Letters, numbers, underscores, hyphens allowed.
                         </p>
+
                         <label htmlFor="password" className={validPwd ? "valid" : ""}>
                             Password:
                             <FontAwesomeIcon icon={faCheck} className={validPwd && pwdFocus ? "valid" : "hide"} />
@@ -192,14 +199,25 @@ const Register = () => {
                             value={lastName}
                         />
 
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="email" className={validEmail ? "valid" : ""}>
+                            Email:
+                            <FontAwesomeIcon icon={faCheck} className={validEmail && emailFocus ? "valid" : "hide"} />
+                            {(emailFocus && !validEmail && email) && <FontAwesomeIcon icon={faTimes} className="invalid" />}
+                        </label>
                         <input
                             className="reg-input"
                             type="email"
                             id="email"
                             onChange={(e) => setEmail(e.target.value)}
                             value={email}
+                            required
+                            onFocus={() => setEmailFocus(true)}
+                            onBlur={() => setEmailFocus(false)}
                         />
+                        <p id="emailnote" className={emailFocus && !validEmail ? "instructions" : "offscreen"}>
+                            <FontAwesomeIcon icon={faInfoCircle} />
+                            Must be a valid email address.
+                        </p>
 
                         <label htmlFor="phoneNumber">Phone Number:</label>
                         <input
@@ -219,7 +237,7 @@ const Register = () => {
                             value={address}
                         />
 
-                        <button className="signUp-btn" disabled={!validName || !validPwd || !validMatch || !firstName || !lastName || !email || !phoneNumber ||!address}>
+                        <button className="signUp-btn" disabled={!validName || !validPwd || !validMatch || !firstName || !lastName || !validEmail || !phoneNumber || !address}>
                             Sign Up
                         </button>
                     </form>
