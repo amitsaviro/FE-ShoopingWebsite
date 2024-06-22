@@ -1,9 +1,11 @@
+/* Navbar.css */
+
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 16px;
-    background-color: #fafafa; 
+    background-color: #fafafa;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
 }
 
@@ -33,7 +35,7 @@
     color: #626262;
 }
 
-.nav_menu hr{
+.nav_menu hr {
     border: none;
     width: 80%;
     height: 3px;
@@ -44,24 +46,7 @@
 .cart_wish_icons {
     display: flex;
     gap: 40px;
-}
-
-.login_navbar button {
-    margin-left: 10px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 75px;
-    color: #515151;
-    cursor: pointer;
-    outline: none;
-    border: 1px solid #7a7a7a;
-    font-size: 20px;
-    font-weight: 500;
-    background: white;
-}
-
-.login_navbar button:active {
-    background-color: #efebeb; 
+    align-items: center;
 }
 
 .icons_count {
@@ -83,13 +68,27 @@ a {
     color: black;
 }
 
-.search-bar-container {
-    margin-top: 10px; 
+.login_navbar button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 75px;
+    color: #515151;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #7a7a7a;
+    font-size: 20px;
+    font-weight: 500;
+    background: white;
+}
+
+.login_navbar button:active {
+    background-color: #efebeb;
 }
 
 .profile-dropdown {
     position: relative;
-    display: inline-block;  
+    display: inline-block;
 }
 
 .profile-dropdown .dropdown-content {
@@ -99,7 +98,7 @@ a {
     min-width: 120px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
 }
 
 .profile-dropdown .dropdown-content a {
@@ -107,7 +106,7 @@ a {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
-    transition: background-color 0.3s ease; /* Smooth hover transition */
+    transition: background-color 0.3s ease;
 }
 
 .profile-dropdown .dropdown-content a:hover {
@@ -135,10 +134,91 @@ a {
     width: 100%;
     text-align: left;
     cursor: pointer;
-    transition: background-color 0.3s ease; 
-    box-sizing: border-box; 
+    transition: background-color 0.3s ease;
+    box-sizing: border-box;
 }
 
 .delete-account-btn:hover {
-    background-color: #ffebee; 
+    background-color: #ffebee;
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 16px;
+    background-color: #fafafa;
+    width: calc(100vw - 32px);
+    max-width: 320px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    padding: 16px;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-menu-items li {
+    margin-bottom: 10px;
+}
+
+.mobile-menu-items li:last-child {
+    margin-bottom: 0;
+}
+
+.mobile-menu-items a {
+    color: #626262;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.mobile-menu-items button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 75px;
+    color: #515151;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #7a7a7a;
+    font-size: 20px;
+    font-weight: 500;
+    background: white;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .desktop-menu {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        color: #626262;
+        margin-right: 16px;
+    }
+
+    .navbar {
+        padding: 16px 0;
+    }
+
+    .mobile-menu {
+        top: 56px;
+        right: 0;
+        width: 100%;
+        max-width: 100%;
+        padding: 16px;
+    }
 }

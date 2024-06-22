@@ -1,23 +1,26 @@
-.relatedProducts{
+.relatedProducts {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     height: 90vh;
-    background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60% );
+    background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
 }
-.relatedProducts h1{
+
+.relatedProducts h1 {
     color: #171717;
     font-size: 50px;
     font-weight: 600;
 }
-.relatedProducts hr{
+
+.relatedProducts hr {
     width: 200px;
     height: 6px;
     border-radius: 10px;
     background: #252525;
 }
-.relatedProducts-items{
+
+.relatedProducts-items {
     margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -26,4 +29,95 @@
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.loading-animation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    height: 300px;
+    margin-top: 50px;
+}
+
+.loading-spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #e90000;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive styles for smartphones */
+@media (max-width: 768px) {
+    .relatedProducts {
+        padding: 20px; 
+        height: auto;
+    }
+
+    .relatedProducts h1 {
+        font-size: 30px; 
+        margin-top: 10px; 
+    }
+
+    .relatedProducts hr {
+        width: 150px; 
+        height: 4px; 
+    }
+
+    .relatedProducts-items {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+        margin-top: 30px; 
+        padding-top: 20px; 
+    }
+
+    .loading-animation {
+        font-size: 16px; 
+        height: 200px; 
+        margin-top: 30px; 
+    }
+
+    .loading-spinner {
+        width: 60px;
+        height: 60px; 
+    }
+}
+
+@media (max-width: 480px) {
+    .relatedProducts h1 {
+        font-size: 24px; 
+    }
+
+    .relatedProducts hr {
+        width: 100px;
+        height: 3px; 
+    }
+
+    .relatedProducts-items {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px; 
+    }
+
+    .loading-animation {
+        font-size: 14px;
+        height: 150px; 
+        margin-top: 20px; 
+    }
+
+    .loading-spinner {
+        width: 50px; 
+        height: 50px; 
+    }
 }

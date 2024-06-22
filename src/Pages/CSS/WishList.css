@@ -20,7 +20,7 @@
 .wishlist-items {
     margin-top: 50px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     justify-content: center;
     gap: 30px;
     max-width: 1200px;
@@ -42,4 +42,11 @@
 .empty-wishList p {
     font-size: 18px;
     color: #757575;
+}
+
+@media (max-width: 768px) {
+    .wishlist-items {
+        grid-template-columns: repeat(2, 1fr); /* 2 items in a row on smaller screens */
+        gap: 20px;
+    }
 }

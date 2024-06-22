@@ -1,11 +1,13 @@
-.footer{
+.footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 50px;
+    padding: 20px;
+    background-color: #f9f9f9;
 }
-.footer-logo{
+.footer-logo {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -14,34 +16,33 @@
     width: 80px;
     height: auto;
 }
-.footer-logo p{
+.footer-logo p {
     color: #383838;
     font-size: 46px;
     font-weight: 700;
 }
-.footer-links{
+.footer-links {
     display: flex;
     list-style: none;
     gap: 50px;
     color: #252525;
     font-size: 20px;
 }
-.footer-links li{
-cursor: pointer;
+.footer-links li {
+    cursor: pointer;
 }
-.footer-social-icons{
+.footer-social-icons {
     display: flex;
     gap: 20px;
 }
-.footer-icons-container{
+.footer-icons-container {
     padding: 10px;
     padding-bottom: 6px;
     background: #fbfbfb;
     justify-content: center;
     align-items: center;
 }
-
-.footer-copyright{
+.footer-copyright {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,17 +52,98 @@ cursor: pointer;
     color: #1a1a1a;
     font-size: 16px;
 }
-.footer-copyright hr{
+.footer-copyright hr {
     width: 80%;
     border: none;
     border-radius: 10px;
     height: 3px;
     background: #c7c7c7;
 }
-.icon{
+.icon {
     width: 30px;
     height: auto;
     cursor: pointer;
 }
 
+/* Responsive styles for tablets and smaller devices */
+@media (max-width: 768px) {
+    .footer {
+        padding: 20px 10px;
+        gap: 40px;
+    }
+    .footer-logo {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-logo img {
+        width: 60px;
+    }
+    .footer-logo p {
+        font-size: 36px;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    .footer-links li {
+        font-size: 18px;
+    }
+    .footer-social-icons {
+        gap: 15px;
+    }
+    .footer-icons-container {
+        padding: 8px;
+    }
+    .footer-copyright {
+        gap: 20px;
+        font-size: 14px;
+    }
+    .footer-copyright hr {
+        width: 90%;
+    }
+    .icon {
+        width: 24px;
+    }
+}
 
+/* Responsive styles for smartphones */
+@media (max-width: 480px) {
+    .footer {
+        padding: 20px 5px;
+        gap: 30px;
+    }
+    .footer-logo {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-logo img {
+        width: 50px;
+    }
+    .footer-logo p {
+        font-size: 28px;
+    }
+    .footer-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .footer-links li {
+        font-size: 16px;
+    }
+    .footer-social-icons {
+        gap: 10px;
+    }
+    .footer-icons-container {
+        padding: 6px;
+    }
+    .footer-copyright {
+        gap: 15px;
+        font-size: 12px;
+    }
+    .footer-copyright hr {
+        width: 95%;
+    }
+    .icon {
+        width: 20px;
+    }
+}

@@ -20,7 +20,6 @@
     padding-bottom: 1rem;
 }
 
-
 .login-input {
     font-family: 'Nunito', sans-serif;
     font-size: 22px;
@@ -31,11 +30,11 @@
 
 .login-input:focus {
     outline: none;
-    border-color: #007bff; 
+    border-color: #007bff;
 }
 
 button {
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .login-btn {
@@ -44,18 +43,18 @@ button {
     padding: 0.75rem;
     border-radius: 8px;
     border: none;
-    background-color: #ff0000; 
+    background-color: #ff0000;
     color: #fff;
     transition: background-color 0.3s ease;
     margin-top: 20px;
 }
 
 .login-btn:hover {
-    background-color: #0056b3; 
+    background-color: #0056b3;
 }
 
 .login-btn:disabled {
-    background-color: #6c757d; 
+    background-color: #6c757d;
     cursor: not-allowed;
 }
 
@@ -109,7 +108,8 @@ button {
     position: relative;
     z-index: 1;
 }
-.login-secced-msg{
+
+.login-secced-msg {
     font-size: 40px;
     font-weight: 700;
     align-items: center;
@@ -117,7 +117,8 @@ button {
     margin-bottom: 100px;
     padding: 10px;
 }
-.login-secced-msg br{
+
+.login-secced-msg br {
     content: "";
     display: block;
     width: 20%;
@@ -126,13 +127,64 @@ button {
     background-color: #928d8d;
     margin: 20px auto;
 }
+
 .login-link {
     color: #007bff;
     text-decoration: none;
     transition: color 0.3s ease;
 }
+
 .login-link:hover {
     color: #0056b3;
 }
 
+/* Responsive styles for smartphones */
+@media (max-width: 768px) {
+    .login-section {
+        min-height: auto; 
+        padding: 0.5rem; 
+        margin-bottom: 10px; 
+    }
 
+    .login-form {
+        width: 100%; 
+    }
+
+    .login-input {
+        font-size: 16px; 
+        padding: 0.5rem; 
+    }
+
+    .login-btn {
+        font-size: 14px; 
+        padding: 0.5rem;
+    }
+
+    .needAnAccount {
+        font-size: 16px; 
+        margin-top: 10px; 
+        margin-bottom: 10px; 
+    }
+
+    .line::before {
+        width: 80%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .login-section {
+        padding: 0.5rem; 
+    }
+
+    .login-input {
+        font-size: 14px; 
+    }
+
+    .login-btn {
+        font-size: 12px;
+    }
+
+    .line::before {
+        width: 60%; 
+    }
+}

@@ -30,6 +30,7 @@ List of main features or functionalities provided by the Shopping Website fronte
 - **Orders Management**: View and manage user orders.
 - **Profile Management**: Edit user profile information.
 - **Category-based Item Listings**: Display items from various categories.
+- **responsive website**: Responsive for all screens size.
 
 ---
 

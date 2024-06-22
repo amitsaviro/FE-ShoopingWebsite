@@ -1,4 +1,4 @@
-.newsLetter{
+.newsLetter {
     width: 65%;
     height: 40vh;
     display: flex;
@@ -11,16 +11,16 @@
     gap: 30px;
     background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
 }
-.newsLetter h1{
+.newsLetter h1 {
     color: #454545;
     font-size: 55px;
     font-weight: 600;
 }
-.newsLetter p{
+.newsLetter p {
     color: #454545;
     font-size: 20px;
 }
-.input-div{
+.input-div {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,7 +30,7 @@
     border-radius: 80px;
     border: 1px solid #e3e3e3;
 }
-.input{
+.input {
     width: 500px;
     margin-left: 30px;
     border: none;
@@ -39,7 +39,7 @@
     font-family: Poppins;
     font-size: 16px;
 }
-.newsLetter div button{
+.newsLetter div button {
     width: 210px;
     height: 70px;
     border-radius: 80px;
@@ -48,4 +48,65 @@
     font-size: 16px;
     cursor: pointer;
     border: none;
+}
+
+/* Responsive styles for smartphones */
+@media (max-width: 768px) {
+    .newsLetter {
+        padding: 20px;
+        width: 90%;
+        height: auto;
+        margin-bottom: 10px;
+        margin-top: 20px;
+    }
+    .newsLetter h1 {
+        font-size: 35px;
+    }
+    .newsLetter p {
+        font-size: 18px;
+    }
+    .input-div {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        border-radius: 40px;
+    }
+    .input {
+        width: 90%;
+        margin: 10px;
+        font-size: 14px;
+    }
+    .newsLetter div button {
+        width: 90%;
+        height: 50px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .newsLetter h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+    .newsLetter p {
+        font-size: 16px;
+        text-align: center;
+    }
+    .input-div {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
+    .input {
+        width: 80%;
+        margin: 10px auto;
+        font-size: 12px;
+    }
+    .newsLetter div button {
+        width: 80%;
+        height: 40px;
+        font-size: 12px;
+        margin: 10px auto;
+    }
 }

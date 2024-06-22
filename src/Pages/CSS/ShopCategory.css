@@ -1,36 +1,41 @@
-.index-sort{
+.index-sort {
     display: flex;
     margin: 20px 170px;
     justify-content: space-between;
     align-items: center;
 }
-.sort-icon{
+
+.sort-icon {
     padding: 10px 20px;
     border-radius: 40px;
     border: 1px solid #888;
 }
-.index-sort p span{ 
-font-weight: 600;
+
+.index-sort p span { 
+    font-weight: 600;
 }
-.shopCategory-products{
+
+.shopCategory-products {
     margin: 20px 170px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 80px;
 }
-.load-more{
-display: flex;
-justify-content: center;
-align-items: center;
-margin: 100px auto;
-width: 233px;
-height: 69px;
-border-radius: 75px;
-background: #ededed;
-color: #787878;
-font-size: 18px;
-font-weight: 500;
+
+.load-more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px auto;
+    width: 233px;
+    height: 69px;
+    border-radius: 75px;
+    background: #ededed;
+    color: #787878;
+    font-size: 18px;
+    font-weight: 500;
 }
+
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -41,9 +46,72 @@ font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999; 
+    z-index: 999;
 }
 
+/* Responsive styles for tablets and smaller devices */
+@media (max-width: 768px) {
+    .index-sort {
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 20px 30px;
+        gap: 10px;
+    }
 
+    .sort-icon {
+        order: 1;
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 
+    .index-sort p {
+        order: 2;
+        text-align: right;
+    }
 
+    .shopCategory-products {
+        margin: 20px 30px;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 50px;
+    }
+
+    .load-more {
+        width: 200px;
+        height: 60px;
+        font-size: 16px;
+    }
+}
+
+/* Responsive styles for smartphones */
+@media (max-width: 480px) {
+    .index-sort {
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 20px 10px;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .sort-icon {
+        order: 2;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .index-sort p {
+        order: 1;
+        text-align: right;
+    }
+
+    .shopCategory-products {
+        margin: 20px 10px;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 40px;
+    }
+
+    .load-more {
+        width: 180px;
+        height: 50px;
+        font-size: 14px;
+    }
+}

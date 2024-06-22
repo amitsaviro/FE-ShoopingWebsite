@@ -1,10 +1,20 @@
-.productsDes{
-display: flex;
-align-items: center;
-gap: 8px;
-color: #5e5e5e;
-font-size: 16px;
-font-weight: 600;
-margin: 30px 170px;
-text-transform: capitalize;
+.productsDes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #5e5e5e;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 30px 170px;
+    text-transform: capitalize;
+}
+
+/* Responsive styles for smartphones */
+@media (max-width: 480px) {
+    .productsDes {
+        flex-wrap: wrap; 
+        justify-content: center; 
+        font-size: 14px; 
+        margin: 20px 10px; 
+    }
 }

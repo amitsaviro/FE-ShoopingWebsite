@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import './Navbar.css';
 import logo from '../../Assets/logo.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faHeart, faAngleDown, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faHeart, faAngleDown, faTrash, faBars } from "@fortawesome/free-solid-svg-icons";
 import { Link, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import AuthContext from "../../Context/AuthProvider";
@@ -18,6 +18,7 @@ const Navbar = () => {
     const { auth, setAuth } = useContext(AuthContext);
     const { calculateTotalCartItems, cartItems } = useContext(ShopContext);
     const firstName = localStorage.getItem('firstName');
+    const [showMobileMenu, setShowMobileMenu] = useState(false);
 
     useEffect(() => {
         setCartItemCount(calculateTotalCartItems());
@@ -41,12 +42,7 @@ const Navbar = () => {
     const handleLogout = () => {
         const logoutConfirmed = window.confirm(`Logout from ${firstName}?`);
         if (logoutConfirmed) {
-            localStorage.removeItem('token');
-            localStorage.removeItem('customerId');
-            localStorage.removeItem('firstName');
-            localStorage.removeItem('address');
-            setAuth({ token: null, customer: null });
-            window.location.href = "/"; // Redirect to home page after logout
+            clearLocalStorageAndLogout();
         }
     };
 
@@ -54,19 +50,22 @@ const Navbar = () => {
         const deleteConfirmed = window.confirm(`Are you sure you want to delete your account, ${firstName}? This action cannot be undone.`);
         if (deleteConfirmed) {
             try {
-                const customerId = localStorage.getItem('customerId');
-                await deleteCustomer(customerId);
-                localStorage.removeItem('token');
-                localStorage.removeItem('customerId');
-                localStorage.removeItem('firstName');
-                localStorage.removeItem('address');
-                setAuth({ token: null, customer: null });
-                window.location.href = "/"; // Redirect to home page after deletion
+                await deleteCustomer(localStorage.getItem('customerId'));
+                clearLocalStorageAndLogout();
             } catch (error) {
                 console.error("Error deleting customer:", error);
                 // Handle error deleting account
             }
         }
+    };
+
+    const clearLocalStorageAndLogout = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('customerId');
+        localStorage.removeItem('firstName');
+        localStorage.removeItem('address');
+        setAuth({ token: null, customer: null });
+        window.location.href = "/"; // Redirect to home page after logout or deletion
     };
 
     const handleCartClick = () => {
@@ -83,13 +82,17 @@ const Navbar = () => {
         }
     };
 
+    const toggleMobileMenu = () => {
+        setShowMobileMenu(!showMobileMenu);
+    };
+
     return (
         <div className="navbar">
             <div className="nav_logo">
                 <img src={logo} alt="logo" />
                 <p><b>MIKASA</b></p>
             </div>
-            <ul className="nav_menu">
+            <ul className="nav_menu desktop-menu">
                 <li onClick={() => { setMenu("shop") }}>
                     <Link to='/'>Shop</Link>
                     {menu === "shop" && !isSearchResultsPage && !isCartOrWishlistPage && location.pathname !== '/register' && location.pathname !== '/login' ? <hr /> : <></>}
@@ -107,12 +110,15 @@ const Navbar = () => {
                     {menu === "hats" && !isSearchResultsPage && !isCartOrWishlistPage && location.pathname !== '/register' && location.pathname !== '/login' ? <hr /> : <></>}
                 </li>
             </ul>
-            <div className="cart_wish_icons">
+            <div className="desktop-searchbar desktop-menu">
+                <SearchBar />
+            </div>
+            <div className="cart_wish_icons desktop-menu">
                 <Link to='/wishList' onClick={handleWishlistClick}><FontAwesomeIcon icon={faHeart} /></Link>
                 <Link to='/cart' onClick={handleCartClick}><FontAwesomeIcon icon={faCartShopping} /></Link>
                 <div className="icons_count">{cartItemCount}</div>
             </div>
-            <div className="login_navbar">
+            <div className="login_navbar desktop-menu">
                 {firstName ? (
                     <div className="profile-dropdown">
                         <FontAwesomeIcon className="dropdown-icon" icon={faAngleDown} />
@@ -133,12 +139,56 @@ const Navbar = () => {
                     </div>
                 )}
             </div>
-            <div className="search-bar-container">
+            <div className={`mobile-menu ${showMobileMenu ? "active" : ""}`}>
+                {firstName && (
+                    <div className="mobile-menu-welcome">
+                        Hello, {firstName}!
+                    </div>
+                )}
                 <SearchBar />
+                <ul className="mobile-menu-items">
+                    <li onClick={() => setMenu("football")}>
+                        <Link to='/football'>Football</Link>
+                    </li>
+                    <li onClick={() => setMenu("volleyball")}>
+                        <Link to='/volleyball'>Volleyball</Link>
+                    </li>
+                    <li onClick={() => setMenu("hats")}>
+                        <Link to='/hats'>Hats</Link>
+                    </li>
+                    <li className="mobile-menu-item">
+                        <Link to='/wishList' onClick={handleWishlistClick}><FontAwesomeIcon icon={faHeart} /> Wish List</Link>
+                    </li>
+                    <li className="mobile-menu-item">
+                        <Link to='/cart' onClick={handleCartClick}><FontAwesomeIcon icon={faCartShopping} /> Cart</Link>
+                    </li>
+                    {auth.token && (
+                        <li className="mobile-menu-item" onClick={handleLogout}>
+                            <button>Logout</button>
+                        </li>
+                    )}
+                    {!auth.token && (
+                        <li className="mobile-menu-item">
+                            <Link to='/login'><button>Login</button></Link>
+                        </li>
+                    )}
+                    {!auth.token && (
+                        <li className="mobile-menu-item">
+                            <Link to='/register'><button>Sign-Up</button></Link>
+                        </li>
+                    )}
+                    {firstName && (
+                        <li className="mobile-menu-item">
+                            <div onClick={handleDeleteAccount} className="delete-account-btn">
+                                <FontAwesomeIcon icon={faTrash} className="trash-icon-navbar" /> Delete Account
+                            </div>
+                        </li>
+                    )}
+                </ul>
             </div>
+            <FontAwesomeIcon icon={faBars} className="menu-toggle" onClick={toggleMobileMenu} />
         </div>
     );
 }
 
 export default Navbar;
-

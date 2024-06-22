@@ -1,3 +1,6 @@
+/* SearchResults.css */
+
+/* Existing styles */
 
 .searchResults h1 {
     color: #171717;
@@ -15,27 +18,30 @@
     margin: 0 auto 5px; 
 }
 
-
-.index-sort{
+.index-sort {
     display: flex;
     margin: 20px 170px;
     justify-content: space-between;
     align-items: center;
 }
-.sort-icon{
+
+.sort-icon {
     padding: 10px 20px;
     border-radius: 40px;
     border: 1px solid #888;
 }
-.index-sort p span{ 
-font-weight: 600;
+
+.index-sort p span { 
+    font-weight: 600;
 }
-.searchResults-products{
+
+.searchResults-products {
     margin: 20px 170px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     row-gap: 80px;
 }
+
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -46,9 +52,61 @@ font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999; 
+    z-index: 999;
 }
 
+/* Responsive styles for tablets and smaller devices */
+@media (max-width: 768px) {
+    .index-sort {
+        margin: 20px 30px;
+        gap: 10px;
+    }
 
+    .sort-icon {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
 
+    .index-sort p {
+        text-align: right;
+    }
 
+    .searchResults-products {
+        margin: 20px 30px;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 50px;
+    }
+}
+
+/* Responsive styles for smartphones */
+@media (max-width: 480px) {
+    .index-sort {
+        margin: 20px 10px;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sort-icon {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .index-sort p {
+        text-align: center;
+        order: 2;
+        margin-top: 10px;
+    }
+
+    .searchResults-products {
+        margin: 20px 10px;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 40px;
+    }
+
+    .load-more {
+        width: 180px;
+        height: 50px;
+        font-size: 14px;
+    }
+}

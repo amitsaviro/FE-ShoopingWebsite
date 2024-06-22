@@ -1,32 +1,32 @@
-    .special{
+.special {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 70vh;
     text-align: center;
-    }
-    .special h2{
-        color: #171717;
-        font-size: 50px;
-        font-weight: 600;
-        margin-top: -5%;
-    }
-    .special hr{
-        width: 200px;
-        height: 6px;
-        border-radius: 10px;
-        background: #252525;
-    }
-    .images{
-        margin-top: 50px;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        justify-content: center;
-        gap: 30px;
-        max-width: 1200px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+}
+.special h2 {
+    color: #171717;
+    font-size: 50px;
+    font-weight: 600;
+    margin-top: -5%;
+}
+.special hr {
+    width: 200px;
+    height: 6px;
+    border-radius: 10px;
+    background: #252525;
+}
+.images {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
 .loading-animation {
     display: flex;
     flex-direction: column;
@@ -36,7 +36,6 @@
     height: 300px; 
     margin-top: 50px;
 }
-
 .loading-spinner {
     border: 8px solid #f3f3f3; 
     border-top: 8px solid #e90000; 
@@ -45,8 +44,60 @@
     height: 80px; 
     animation: spin 1s linear infinite;
 }
-
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Responsive styles for smartphones */
+@media (max-width: 768px) {
+    .special {
+        padding: 20px;
+        height: auto;
+    }
+    .special h2 {
+        font-size: 30px;
+        margin-top: 10px;
+    }
+    .special hr {
+        width: 150px;
+        height: 4px;
+    }
+    .images {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+    }
+    .loading-animation {
+        font-size: 16px;
+        height: 200px; 
+        margin-top: 30px; 
+    }
+    .loading-spinner {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .special h2 {
+        font-size: 24px;
+    }
+    .special hr {
+        width: 100px;
+        height: 3px;
+    }
+    .images {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .loading-animation {
+        font-size: 14px;
+        height: 150px; 
+        margin-top: 20px; 
+    }
+    .loading-spinner {
+        width: 50px;
+        height: 50px;
+    }
 }

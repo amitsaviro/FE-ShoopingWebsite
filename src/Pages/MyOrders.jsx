@@ -1,21 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import { getOrderListByCustomer } from '../components/services/orderListApi';
-import "./CSS/MyOrders.css";
+import "./CSS/MyOrders.css"; // Import external CSS file
 import { ShopContext } from "../Context/ShopContext";
 import { getOrderItemsByOrderListId } from "../components/services/orderItemApi";
 import CartItemsFile from '../components/CartItems/CartItemsFile';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const MyOrders = () => {
     const [orderLists, setOrderLists] = useState([]);
     const [selectedOrderItems, setSelectedOrderItems] = useState([]);
     const [selectedOrderList, setSelectedOrderList] = useState(null);
     const [showCart, setShowCart] = useState(false);
-    const [clickedOrderListId, setClickedOrderListId] = useState(null); // Track clicked order list id
-    const [transitioning, setTransitioning] = useState(false); // Track transitioning state
-    const { updateCartWithOrderItems, myOrdersCartItems, isEditMode, toggleEditMode, setSelectedOrderListId} = useContext(ShopContext);
+    const [clickedOrderListId, setClickedOrderListId] = useState(null);
+    const [transitioning, setTransitioning] = useState(false);
+    const { updateCartWithOrderItems, myOrdersCartItems, isEditMode, toggleEditMode, setSelectedOrderListId } = useContext(ShopContext);
     const [orderStatus, setOrderStatus] = useState('');
     const firstName = localStorage.getItem('firstName');
 
@@ -45,15 +44,13 @@ const MyOrders = () => {
             updateCartWithOrderItems(orderItems);
             setOrderStatus(orderStatus);
 
-            // Toggle showCart based on clicked order list id
             setShowCart(prevShowCart => {
                 if (prevShowCart && clickedOrderListId === orderListId) {
-                    // If the same order list is clicked again, hide the cart
-                    setTransitioning(true); // Trigger transitioning state
+                    setTransitioning(true);
                     setTimeout(() => {
                         setClickedOrderListId(null);
                         setTransitioning(false);
-                    }, 500); // Set timeout to match the transition duration
+                    }, 500);
                     return false;
                 } else {
                     setClickedOrderListId(orderListId);
@@ -65,20 +62,19 @@ const MyOrders = () => {
         }
     };
 
-    const handleEditIconClick = () => {//edit TEMP order
+    const handleEditIconClick = () => {
         if (selectedOrderList) {
-            setSelectedOrderListId(selectedOrderList); 
-            toggleEditMode(true);//edit mode-true
+            setSelectedOrderListId(selectedOrderList);
+            toggleEditMode(true);
             alert("Now you can update your order!");
         } else {
             alert("Please select an order to edit.");
         }
     };
-    
 
     return (
         <div className={`my-orders-container ${transitioning ? 'transitioning' : ''}`}>
-            <div className={`order-list-container ${showCart || isEditMode ? 'cart-open' : ''}`} style={{ width: showCart || isEditMode ? '18%' : '100%' }}>
+            <div className={`order-list-container ${showCart || isEditMode ? 'cart-open' : ''}`}>
                 {orderLists.length > 0 && (
                     <>
                         <h2>My Orders</h2>
@@ -107,14 +103,14 @@ const MyOrders = () => {
                 )}
             </div>
 
-            <div className={`cart-container ${showCart || isEditMode ? 'open' : ''}`} style={{ width: showCart || isEditMode ? '82%' : '0' }}>
+            <div className={`cart-container ${showCart || isEditMode ? 'open' : ''}`}>
                 <h2>Cart</h2>
                 <hr className="hr-title" />
                 { orderStatus === 'TEMP' && (
-                <div className="edit-icon" onClick={handleEditIconClick}>
-                    <FontAwesomeIcon icon={faPenToSquare} />
-                </div>
-            )}
+                    <div className="edit-icon" onClick={handleEditIconClick}>
+                        <FontAwesomeIcon icon={faPenToSquare} />
+                    </div>
+                )}
                 <CartItemsFile itemsToDisplay='myOrders' orderStatus={orderStatus} />
             </div>
         </div>
